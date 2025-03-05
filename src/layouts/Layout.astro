@@ -32,8 +32,10 @@ const {
       gtag("config", "G-0DD51DTHV6");
     </script>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pragyantra-Blog</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
     <SEO
       title={title}
       description={description}
@@ -49,9 +51,60 @@ const {
         card: "summary_large_image",
       }}
     />
+    
+    <!-- Essential Meta Tags -->
+    <meta name="keywords" content="Tech Blog, AI, Robotics, Innovation, Pragyantra, IIT Madras, Coding">
+    <meta name="author" content="Pragyantra Blog Team">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (For Facebook & LinkedIn) -->
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{description}">
+    <meta property="og:image" content="https://www.pragyantra.in/blog-cover.jpg">
+    <meta property="og:url" content="https://www.pragyantra.in/blog">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card (For Twitter Sharing) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="{description}">
+    <meta name="twitter:image" content="https://www.pragyantra.in/blog-cover.jpg">
+    <meta name="twitter:site" content="@pragyantra">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.pragyantra.in/blog">
+    
+    <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
+    
+    <!-- Favicon & Theme Color -->
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Schema Markup (Structured Data for a Blog) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Pragyantra Blog",
+      "url": "https://www.pragyantra.in/blog",
+      "description": "{description}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Pragyantra",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.pragyantra.in/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.pragyantra.in/blog"
+      }
+    }
+    </script>
+
+    <!-- Dark Mode Theme Handling -->
     <script is:inline>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
       if (
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
@@ -63,9 +116,8 @@ const {
       }
     </script>
   </head>
-  <body
-    class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200"
-  >
+  
+  <body class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
     <Header />
     <main class="container mx-auto px-4 py-8">
       <slot />
