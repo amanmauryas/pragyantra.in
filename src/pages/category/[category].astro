@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const categories = [
+    {
+      slug: 'ai-ml',
+      name: 'AI & Machine Learning',
+      description: 'Latest developments in healthcare AI and ML applications',
+      image: '/images/categories/ai-ml.jpg'
+    },
+    {
+      slug: 'neuroscience',
+      name: 'Neuroscience',
+      description: 'Breakthrough discoveries in brain research and neural engineering',
+      image: '/images/categories/neuroscience.jpg'
+    },
+    {
+      slug: 'digital-health',
+      name: 'Digital Health',
+      description: 'Innovations in digital healthcare and telemedicine',
+      image: '/images/categories/digital-health.jpg'
+    },
+    {
+      slug: 'medical-devices',
+      name: 'Medical Devices',
+      description: 'Advanced medical technology and device innovations',
+      image: '/images/categories/medical-devices.jpg'
+    },
+    {
+      slug: 'data-analytics',
+      name: 'Data Analytics',
+      description: 'Healthcare data analysis and predictive modeling',
+      image: '/images/categories/data-analytics.jpg'
+    },
+    {
+      slug: 'ethics',
+      name: 'Ethics',
+      description: 'Ethical considerations in healthcare technology',
+      image: '/images/categories/ethics.jpg'
+    }
+  ];
+
+  return categories.map(category => ({
+    params: { category: category.slug },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props;
+---
+
+<Layout title={`${category.name} - Pragyantra.in`} description={category.description}>
+  <div class="relative py-16">
+    <div class="absolute inset-0 overflow-hidden">
+      <img
+        src={category.image}
+        alt={category.name}
+        class="w-full h-full object-cover opacity-20"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-600/90 to-primary-800/90"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
+          {category.name}
+        </h1>
+        <p class="mt-3 max-w-md mx-auto text-lg text-white/90 sm:text-xl md:mt-5 md:max-w-3xl">
+          {category.description}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Article cards will be populated here once we set up the content collection -->
+      <div class="bg-white dark:bg-gray-700 rounded-lg shadow-md dark:shadow-gray-900/30 p-6 transition-colors duration-200">
+        <p class="text-gray-600 dark:text-gray-300">Coming soon: Articles in this category</p>
+      </div>
+    </div>
+  </div>
+</Layout>

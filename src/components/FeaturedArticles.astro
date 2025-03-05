@@ -1,0 +1,56 @@
+---
+const featuredArticles = [
+  {
+    title: "AI-Powered Diagnostic Tools: The Next Frontier in Healthcare",
+    excerpt: "How machine learning algorithms are revolutionizing medical diagnosis and improving patient outcomes.",
+    category: "AI & ML",
+    author: "Dr. Sarah Chen",
+    date: "2024-03-15",
+    image: "/images/ai-diagnostics.jpg",
+    href: "/blog/ai-powered-diagnostic-tools"
+  },
+  {
+    title: "Breakthrough in Neural Interface Technology",
+    excerpt: "New developments in brain-computer interfaces promise enhanced treatment for neurological conditions.",
+    category: "Neuroscience",
+    author: "Prof. Michael Thompson",
+    date: "2024-03-14",
+    image: "/images/neural-interface.jpg",
+    href: "/blog/neural-interface-breakthrough"
+  },
+  {
+    title: "The Ethics of AI in Clinical Decision Making",
+    excerpt: "Examining the moral implications of automated healthcare decisions and patient privacy.",
+    category: "Ethics",
+    author: "Dr. Emily Rodriguez",
+    date: "2024-03-13",
+    image: "/images/ai-ethics.jpg",
+    href: "/blog/ai-clinical-ethics"
+  }
+];
+---
+
+<section class="py-12">
+  <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Featured Articles</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {featuredArticles.map((article) => (
+      <article class="bg-white dark:bg-gray-700 rounded-lg shadow-md dark:shadow-gray-900/30 overflow-hidden transition-colors duration-200">
+        <img src={article.image} alt="" class="w-full h-48 object-cover" />
+        <div class="p-6">
+          <div class="text-sm text-primary-600 dark:text-primary-400 mb-2">{article.category}</div>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <a href={article.href} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              {article.title}
+            </a>
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">{article.excerpt}</p>
+          <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+            <span>{article.author}</span>
+            <span class="mx-2">•</span>
+            <time datetime={article.date}>{new Date(article.date).toLocaleDateString()}</time>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
